@@ -6,6 +6,7 @@ import { FaHeart, FaRegHeart, FaComment, FaRetweet } from 'react-icons/fa';
 import { useAuth } from '../context/AuthContext';
 import { useSocket } from '../context/SocketContext';
 import { toast } from 'react-toastify';
+import api from '../config/axios.js';
 
 const Post = ({ post, onUpdate }) => {
   const [showComments, setShowComments] = useState(false);
@@ -15,7 +16,7 @@ const Post = ({ post, onUpdate }) => {
 
   const handleLike = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/posts/${post._id}/like`);
+      await axios.put(`https://social-media-platform-9q09.onrender.com/api/posts/${post._id}/like`);
       
       if (!post.likes.includes(user._id) && socket) {
         socket.emit('newLike', post.user._id);
@@ -30,7 +31,7 @@ const Post = ({ post, onUpdate }) => {
   const handleComment = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/api/posts/${post._id}/comments`, {
+      await axios.post(`https://social-media-platform-9q09.onrender.com/api/posts/${post._id}/comments`, {
         content: commentContent,
       });
       
