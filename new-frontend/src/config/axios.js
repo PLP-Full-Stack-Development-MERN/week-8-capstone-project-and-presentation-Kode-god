@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseURL = import.meta.env.MODE === 'production'
-  ? 'https://your-backend-url.onrender.com'  // You'll update this with your Render URL
+  ? 'https://social-media-platform-9q09.onrender.com'  // update this with your Render URL
   : 'http://localhost:5000';
 
 const api = axios.create({
