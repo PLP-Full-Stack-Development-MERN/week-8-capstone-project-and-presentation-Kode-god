@@ -22,7 +22,7 @@ const httpServer = createServer(app);
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? 'https://your-frontend-url.vercel.app'  // You'll update this with your Vercel URL
+    ? 'https://twitter-clone-pink-ten.vercel.app'  //  update this with your Vercel URL
     : 'http://localhost:5173',
   credentials: true
 }));
@@ -41,7 +41,7 @@ app.use(errorHandler);
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.NODE_ENV === 'production'
-      ? 'https://your-frontend-url.vercel.app'  // You'll update this with your Vercel URL
+      ? 'https://twitter-clone-pink-ten.vercel.app/'  // update this with your Vercel URL
       : 'http://localhost:5173',
     methods: ["GET", "POST"],
     credentials: true
