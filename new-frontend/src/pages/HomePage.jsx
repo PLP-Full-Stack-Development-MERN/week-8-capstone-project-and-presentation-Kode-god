@@ -4,6 +4,7 @@ import CreatePost from '../components/CreatePost';
 import Post from '../components/Post';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import api from '../config/axios.js';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ const HomePage = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/posts');
+      const { data } = await axios.get('https://social-media-platform-9q09.onrender.com/api/posts');
       setPosts(data);
     } catch (error) {
       toast.error('Error fetching posts');
