@@ -4,6 +4,7 @@ import { useSocket } from '../context/SocketContext';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 import { FaImage } from 'react-icons/fa';
+import api from '../config/axios.js';
 
 const CreatePost = ({ onPostCreated }) => {
   const [content, setContent] = useState('');
@@ -14,7 +15,7 @@ const CreatePost = ({ onPostCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/posts', {
+      const { data } = await axios.post('https://social-media-platform-9q09.onrender.com/api/posts', {
         content,
         image,
       });
