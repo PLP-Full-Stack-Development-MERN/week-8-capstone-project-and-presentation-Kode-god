@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import api from '../config/axios.js';
 
 const AuthContext = createContext();
 
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserProfile = async () => {
     try {
-      const { data } = await axios.get('http://localhost:5000/api/users/profile');
+      const { data } = await axios.get('https://social-media-platform-9q09.onrender.com/api/users/profile');
       setUser(data);
     } catch (error) {
       localStorage.removeItem('token');
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    const { data } = await axios.post('http://localhost:5000/api/users/login', {
+    const { data } = await axios.post('https://social-media-platform-9q09.onrender.com/api/users/login', {
       email,
       password,
     });
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (username, email, password) => {
-    const { data } = await axios.post('http://localhost:5000/api/users', {
+    const { data } = await axios.post('https://social-media-platform-9q09.onrender.com/api/users', {
       username,
       email,
       password,
