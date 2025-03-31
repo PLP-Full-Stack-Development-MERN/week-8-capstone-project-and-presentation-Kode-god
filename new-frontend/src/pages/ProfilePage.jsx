@@ -4,6 +4,7 @@ import axios from 'axios';
 import Post from '../components/Post';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import api from '../config/axios.js';
 
 const ProfilePage = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const ProfilePage = () => {
 
   const fetchProfile = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/users/profile/${id}`);
+      const { data } = await axios.get(`https://social-media-platform-9q09.onrender.com/api/users/profile/${id}`);
       setProfile(data);
     } catch (error) {
       toast.error('Error fetching profile');
@@ -23,7 +24,7 @@ const ProfilePage = () => {
 
   const fetchPosts = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/posts/user/${id}`);
+      const { data } = await axios.get(`https://social-media-platform-9q09.onrender.com/api/posts/user/${id}`);
       setPosts(data);
     } catch (error) {
       toast.error('Error fetching posts');
@@ -34,7 +35,7 @@ const ProfilePage = () => {
 
   const handleFollow = async () => {
     try {
-      await axios.put(`http://localhost:5000/api/users/${id}/follow`);
+      await axios.put(`https://social-media-platform-9q09.onrender.com/api/users/${id}/follow`);
       fetchProfile();
       toast.success(profile.followers.includes(user._id) 
         ? 'Unfollowed successfully' 
